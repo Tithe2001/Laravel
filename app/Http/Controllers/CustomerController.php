@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserNotification;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerController extends Controller
 {
@@ -91,4 +93,12 @@ class CustomerController extends Controller
         Customer::find($id)->delete();
         return redirect()->back()->with('success', 'Customer deleted');
     }
+
+
+
 }
+
+// function sendmail(){
+//     Mail::to("is4901745@gmail.com")->send(new UserNotification);
+//     return "Mail has been sent successfully";
+// }
