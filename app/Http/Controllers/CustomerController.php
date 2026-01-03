@@ -98,7 +98,7 @@ class CustomerController extends Controller
 
 }
 
-// function sendmail(){
-//     Mail::to("is4901745@gmail.com")->send(new UserNotification);
-//     return "Mail has been sent successfully";
-// }
+function sendmail(){
+    Mail::to("is4901745@gmail.com")->send(new UserNotification);
+    return "Mail has been sent successfully";
+}

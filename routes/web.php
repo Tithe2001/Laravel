@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TelemedicineController;
 use App\Mail\UserNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -18,6 +19,9 @@ Route::middleware("auth")->group(function(){
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit']);
     Route::put('/customer/update/{id}', [CustomerController::class, 'update']);
     Route::delete('/customer/delete/{id}', [CustomerController::class, 'delete']);
+
+
+    Route::get('/telemedicine', [TelemedicineController::class, 'index']);
 
 });
 

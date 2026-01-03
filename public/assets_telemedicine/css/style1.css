@@ -1,0 +1,111 @@
+/* Add this to your CSS file */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+/* Thin scrollbar width */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+  height: 8px; /* Adjust the height for horizontal scrollbars */
+}
+
+/* Add a global style for Firefox */
+.scrollbar-thin {
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+  scrollbar-color: #25ced1 #caeced; /* Thumb color and track color for Firefox */
+}
+
+/* Initially hide arrows */
+.slick-prev,
+.slick-next {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Show arrows on hover */
+.post-slider:hover .slick-prev,
+.post-slider:hover .slick-next {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Arrow button styles */
+.slick-prev,
+.slick-next {
+  background-color: #25ced1 !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #25ced1 !important;
+}
+
+/* Animation for smooth transitions */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+.group:hover .group-hover\:scale-125 {
+  transform: scale(1.25);
+  transition: all 0.3s ease-in-out;
+}
+.group:hover .group-hover\:scale-95 {
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  padding: 0;
+  list-style: none !important;
+}
+
+/* Default gap for larger screens (PC) */
+@media screen and (min-width: 1440px) {
+  .slick-dots {
+    gap: 30px; /* Adjust gap for PCs */
+  }
+}
+
+/* Gap for laptop screens */
+@media screen and (max-width: 1439px) and (min-width: 1024px) {
+  .slick-dots {
+    gap: 20px; /* Adjust gap for laptops */
+  }
+}
+
+/* Gap for laptop screens */
+@media screen and (max-width: 1023px) and (min-width: 360px) {
+  .slick-dots {
+    gap: 20px; /* Adjust gap for laptops */
+  }
+}
+
+.slick-dots li {
+  margin: 0 5px; /* Adjust spacing between dots */
+  list-style: none !important;
+}
+
+.slick-dots li button {
+  width: 45px !important;
+  height: 5px !important;
+  border-radius: 48px !important;
+  border: 1px solid #25ced1 !important;
+  list-style: none !important;
+}
+
+/* Removes default Slick dot styling */
+.slick-dots li button::before {
+  content: "" !important;
+  display: none !important;
+}
+
+.slick-dots li.slick-active button {
+  background-color: #25ced1 !important;
+}

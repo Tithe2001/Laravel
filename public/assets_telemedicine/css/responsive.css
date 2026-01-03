@@ -1,0 +1,259 @@
+/*
+Theme Name:Karona - Health & Medical Multipurpose Template
+Author: Codezion Softwares
+Author URL: https://themeforest.net/user/codezionsoftwares
+Version: 1.0.0
+*/
+@media (max-width: 1500px) {
+}
+@media (max-width: 1200px) {
+  .mb-lg-20 {
+    margin-bottom: 20px;
+  }
+  .mb-lg-30 {
+    margin-bottom: 30px;
+  }
+  .mb-lg-40 {
+    margin-bottom: 40px;
+  }
+  .mb-lg-80 {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 1024px) {
+  /*Navigation*/
+  .hide-desk {
+    display: block;
+  }
+  .header .navigation-wrapper nav > .main-navigation .desk-logo {
+    display: none;
+  }
+  .header .navigation-wrapper nav > .main-navigation .hamburger-menu {
+    display: flex;
+  }
+  .header .navigation-wrapper nav > .main-navigation .main-menu {
+    display: block;
+    position: fixed;
+    left: -320px;
+    width: 320px;
+    height: 100vh;
+    top: 61px;
+    background: #25ced1;
+    transition: 0.5s all;
+    overflow: auto;
+    z-index: 100;
+  }
+  .header .navigation-wrapper nav > .main-navigation .main-menu.active {
+    left: 0;
+  }
+  .header .navigation-wrapper nav > .main-navigation .main-menu > ul {
+    display: block;
+  }
+  .header .navigation-wrapper nav > .main-navigation .main-menu > ul > .search {
+    display: none;
+  }
+  .header
+    .navigation-wrapper
+    nav
+    > .main-navigation
+    .main-menu
+    > ul
+    > .menu-item {
+    padding: 0;
+    margin: 10px;
+  }
+  .header
+    .navigation-wrapper
+    nav
+    > .main-navigation
+    .main-menu
+    > ul
+    > .menu-item
+    > a {
+    padding: 10px 15px;
+    display: flex;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+  }
+  .header
+    .navigation-wrapper
+    nav
+    > .main-navigation
+    .main-menu
+    > ul
+    > .menu-item.active
+    > a {
+    color: #263077;
+    font-weight: 500;
+  }
+  .menu-item-has-children > a > .arrow:after,
+  .menu-item-has-megamenu > a > .arrow:after {
+    position: absolute;
+    right: 15px;
+  }
+  .menu-item-has-children .submenu .menu-item-has-children > .submenu,
+  .menu-item-has-megamenu:hover > .megamenu,
+  .menu-item-has-megamenu .megamenu,
+  .menu-item-has-children .submenu {
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+    width: 100%;
+    position: relative;
+    display: none;
+    padding: 0;
+    transform: none;
+  }
+  .mb-md-20 {
+    margin-bottom: 20px;
+  }
+  .mb-md-30 {
+    margin-bottom: 30px;
+  }
+  .mb-md-40 {
+    margin-bottom: 40px;
+  }
+  .mb-md-80 {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 767px) {
+  /*topbar*/
+  .header .topbar .leftside,
+  .header .topbar .rightside {
+    display: flex;
+    justify-content: center;
+  }
+  .header .topbar .rightside ul > li.book-appointment > a,
+  .header .topbar .rightside ul > li.login {
+    padding: 12px 30px;
+  }
+  /*Main Banner*/
+  .main-banner-wrapper .banner-text {
+    left: 0;
+    right: 0;
+  }
+  /*Coming soon*/
+  .coming-soon .coming-soon-text h1 {
+    font-size: 40px;
+  }
+  .coming-soon .coming-soon-text .counter .counter-box .inner-box {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  .coming-soon .coming-soon-text .counter .counter-box {
+    margin: 0 5px;
+  }
+  .blog-details-wrap .social-media-box > ul,
+  .post-details-tags-social .tags-box {
+    text-align: center;
+    justify-content: center;
+  }
+  .prevention-content .title {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .prevention-content .title h4 {
+    font-size: 16px;
+  }
+  .prevention-content .content-list {
+    padding: 20px;
+  }
+  .prevention-content .content-list .content {
+    padding-left: 0;
+    text-align: center;
+  }
+  .prevention-content .content-list .content .icon {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .prevention-content .content-list .content h3 {
+    font-size: 16px;
+  }
+  .mb-sm-20 {
+    margin-bottom: 20px;
+  }
+  .mb-sm-30 {
+    margin-bottom: 30px;
+  }
+  .mb-sm-40 {
+    margin-bottom: 40px;
+  }
+  .mb-sm-80 {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 576px) {
+  /*topbar*/
+  .header .topbar .rightside ul > li.book-appointment > a,
+  .header .topbar .rightside ul > li.login {
+    padding: 8px 10px;
+  }
+  /*Navigation*/
+  .header .navigation-wrapper nav > .main-navigation .main-menu {
+    left: -260px;
+    width: 260px;
+  }
+  /*Coming soon*/
+  .coming-soon .coming-soon-text .counter {
+    flex-wrap: wrap;
+  }
+  .coming-soon .coming-soon-text .counter .counter-box {
+    margin: 0 5px 10px;
+    width: 100px;
+  }
+  .coming-soon .coming-soon-contact ul {
+    justify-content: center;
+  }
+  .coming-soon .coming-soon-contact ul li {
+    width: auto;
+    padding: 0 15px;
+  }
+  .stat-heading .right-side,
+  .stat-heading {
+    display: block;
+    text-align: center;
+  }
+  .comment-box .children {
+    padding-left: 0;
+  }
+  .sidebar_wrap
+    .sidebar
+    .sidebar_widgets
+    .popular-post
+    .post-box
+    .post-meta
+    > a {
+    padding: 10px 15px;
+  }
+  .about-us .about-wrap {
+    padding: 20px;
+    padding-bottom: 0;
+  }
+  .mb-xs-20 {
+    margin-bottom: 20px;
+  }
+  .mb-xs-30 {
+    margin-bottom: 30px;
+  }
+  .mb-xs-40 {
+    margin-bottom: 40px;
+  }
+  .mb-xs-80 {
+    margin-bottom: 80px;
+  }
+}
+@media (max-width: 380px) {
+  /*coming soon*/
+  .coming-soon .main .counter .counter-box {
+    margin: 0 10px;
+  }
+  .coming-soon .main .counter .counter-box .inner-box {
+    width: 50px;
+    height: 50px;
+  }
+}
