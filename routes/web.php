@@ -21,7 +21,8 @@ Route::middleware("auth")->group(function(){
     Route::delete('/customer/delete/{id}', [CustomerController::class, 'delete']);
 
 
-    Route::get('/telemedicine', [TelemedicineController::class, 'index']);
+    Route::get('/telemedicine', [TelemedicineController::class, 'index'])->name('telemedicine.index');;
+    Route::get('/telemedicine/create', [TelemedicineController::class, 'create'])->name('telemedicine.create');;
 
 });
 

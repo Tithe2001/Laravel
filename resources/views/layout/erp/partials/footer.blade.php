@@ -430,7 +430,11 @@
 	<!-- <script src="js/pages/widget-blog.js"></script> -->
 	<script src="{{asset('assets')}}/js/pages/dashboard.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
+ <script>
+            document.querySelector('[data-toggle="push-menu"]').addEventListener('click', function() {
+                document.getElementById('logoText').classList.toggle('d-none');
+            });
+        </script>
 
 </body>
 </html>

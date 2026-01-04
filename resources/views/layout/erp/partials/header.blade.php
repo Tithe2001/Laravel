@@ -24,6 +24,7 @@
 
 
 
+
 </head>
 
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
@@ -42,12 +43,23 @@
                         <span class="dark-logo"><img src="{{ asset('assets') }}/images/logo-letter.png"
                                 alt="logo"></span>
                     </div>
-                    <div class="logo-lg">
-                        <span class="light-logo"><img src="{{ asset('assets') }}/images/logo-dark-text.png"
-                                alt="logo"></span>
-                        <span class="dark-logo"><img src="{{ asset('assets') }}/images/logo-light-text.png"
-                                alt="logo"></span>
+
+                    <div
+                        class="logo-lg d-flex align-items-center justify-content-center justify-content-lg-start gap-2">
+                        <span class="dark-logo">
+                            <img src="{{ asset('assets') }}/images/logo-light-text.png" alt="logo" class="img-fluid"
+                                style="max-height:40px;">
+                        </span>
+
+                        <h4 id="logoText" class="mb-0 fw-semibold text-blue">
+                            FAST PHARMA
+                        </h4>
+
+
                     </div>
+
+
+
                 </a>
             </div>
             <!-- Header Navbar -->
@@ -238,3 +250,5 @@
                 </div>
             </nav>
         </header>
+
+       

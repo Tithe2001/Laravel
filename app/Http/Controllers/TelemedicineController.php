@@ -9,4 +9,9 @@ class TelemedicineController extends Controller
    public function index(){
         return view ("pages.erp.telemedicine.index");
     }
+
+     public function create()
+    {
+        return view("pages.erp.telemedicine.create");
+    }
 }
