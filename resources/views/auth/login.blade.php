@@ -115,7 +115,7 @@
                             <div class="content-top-agile p-20 pb-0">
                                 <h2 class="text-primary">Fast Pharma</h2>
 
-                                <p class="mb-0">{{ __('Login') }} to continue .</p>
+                                <p class="mb-0">{{ __('Login') }} to Continue </p>
                             </div>
 
 

@@ -74,7 +74,7 @@
                                     <div class="form-floating">
                                         <select class="form-select rounded-3" name="service" id="floatingService" required>
                                             <option value="" disabled selected>Select Specialist Service*</option>
-                                            <option value="Child Specialist">Child Specialist</option>
+                                            <option value="Child Specialist">pediatric</option>
                                             <option value="Medicine Specialist">Medicine Specialist</option>
                                             <option value="Emergency Dentistry">Emergency Dentistry</option>
                                             <option value="Orthopedist">Orthopedist</option>
@@ -121,7 +121,11 @@
 
                                 <!-- Submit -->
                                 <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-primary rounded-3 shadow-sm px-5 py-2">Send Appointment Request</button>
+                                    <a href="{{ route('telemedicine.payment') }}" type="submit"  class="btn btn-primary rounded-3 shadow-sm px-5 py-2">Send Appointment Request</a>
+                               <form  action="{{ route('telemedicine.payment') }}" method="GET"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
 
                             </div>

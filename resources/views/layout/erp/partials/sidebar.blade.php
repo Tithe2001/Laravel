@@ -24,8 +24,13 @@
 				  </ul> --}}
 
                     </li>
-                    <li title="Dashboard"><a href="index-products.html"><i
-                                data-feather="package"></i><span>Products</span></a></li>
+                    <li title="Dashboard"><a href="{{ route('product.index') }}"><i
+                                data-feather="package"></i><span>Products</span></a>
+                                <form action="{{ route('product.index') }}" method="GET" class="d-none">
+                            @csrf
+                        </form>
+
+                            </li>
                     <li title="Dashboard"><a href="index-sales.html"><i
                                 data-feather="bar-chart-2"></i><span>Purchase</span></a></li>
                     <li title="Dashboard"><a href="index-order.html"><i

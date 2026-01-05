@@ -14,4 +14,9 @@ class TelemedicineController extends Controller
     {
         return view("pages.erp.telemedicine.create");
     }
+    
+     public function payment()
+    {
+        return view("pages.erp.telemedicine.payment");
+    }
 }
