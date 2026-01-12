@@ -15,3 +15,10 @@
   {{-- footer --}}
 
   @include('layout.erp.partials.footer');
+
+
+   @yield("js")
+ @stack("js")
+
+
+

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TelemedicineController;
 use App\Mail\UserNotification;
@@ -42,7 +43,8 @@ Route::middleware("auth")->group(function () {
 // });
 
 Route::get("sendmail", function () {
-    Mail::to("is4901745@gmail.com")->send(new UserNotification);
+    // Mail::to("is4901745@gmail.com")->send(new UserNotification);
+    Mail::to("afrinakthertithebhuiyan@gmail.com")->send(new UserNotification);
     return "Mail has been sent successfully";
 });
 
@@ -56,3 +58,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::match(['get', 'post'], '/logout/', [LoginController::class, 'logout'])->name('logout');
+
+Route::resource("orders",OrderController::class);
