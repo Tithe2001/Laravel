@@ -33,8 +33,13 @@
                             </li>
                     <li title="Dashboard"><a href="index-sales.html"><i
                                 data-feather="bar-chart-2"></i><span>Purchase</span></a></li>
-                    <li title="Dashboard"><a href="index-order.html"><i
-                                data-feather="shopping-cart"></i><span>Orders</span></a></li>
+                    <li title="Dashboard"><a href="{{ route('orders.index') }}"><i
+                                data-feather="shopping-cart"></i><span>Orders</span></a>
+
+
+
+
+                            </li>
                     <li title="Dashboard"><a href="index-payment.html"><i
                                 data-feather="credit-card"></i><span>Stock</span></a></li>
                     <li class="header">Apps & Pages </li>

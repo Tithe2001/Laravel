@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TelemedicineController;
 use App\Mail\UserNotification;
@@ -34,6 +35,30 @@ Route::middleware("auth")->group(function () {
     Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+
+
+
+// Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+//     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+//     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+//     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+//     Route::get('/order/{order}/edit', [OrderController::class, 'edit'])->name('order.edit');
+//     Route::put('/order/{order}', [OrderController::class, 'update'])->name('order.update');
+//     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 
