@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+
+ public function stocks()
+{
+    return $this->hasMany(Stock::class, 'product_id');
+}
+
+
 }

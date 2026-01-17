@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TelemedicineController;
 use App\Mail\UserNotification;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +24,8 @@ Route::middleware("auth")->group(function () {
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit']);
     Route::put('/customer/update/{id}', [CustomerController::class, 'update']);
     Route::delete('/customer/delete/{id}', [CustomerController::class, 'delete']);
+    Route::get('customer/find/{id}', [CustomerController::class, 'find']);
+
 
 
     Route::get('/telemedicine', [TelemedicineController::class, 'index'])->name('telemedicine.index');
@@ -38,14 +42,24 @@ Route::middleware("auth")->group(function () {
 
 
 
+Route::prefix('purchases')->group(function () {
 
-// Route::get('/order', [OrderController::class, 'index'])->name('order.index');
-//     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
-//     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-//     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
-//     Route::get('/order/{order}/edit', [OrderController::class, 'edit'])->name('order.edit');
-//     Route::put('/order/{order}', [OrderController::class, 'update'])->name('order.update');
-//     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
+    Route::get('/', [PurchaseController::class, 'index'])->name('purchases.index');
+    Route::get('/create', [PurchaseController::class, 'create'])->name('purchases.create');
+    Route::post('/store', [PurchaseController::class, 'store'])->name('purchases.store');
+    Route::get('/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
+    Route::get('/{purchase}/edit', [PurchaseController::class, 'edit'])->name('purchases.edit');
+    Route::put('/{purchase}', [PurchaseController::class, 'update'])->name('purchases.update');
+    Route::delete('/{purchase}', [PurchaseController::class, 'destroy'])->name('purchases.destroy');
+});
+
+Route::prefix('stocks')->group(function () {
+    Route::get('/', [StockController::class, 'index'])->name('stocks.index');
+});
+
+
+
+
 
 
 

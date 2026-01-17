@@ -1,6 +1,7 @@
 @extends('layout.erp.app')
 
 @section('content')
+<div class="content-wrapper">
 <div class="container-fluid mt-4">
     <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -78,6 +79,7 @@
 
         </div>
     </div>
+</div>
 </div>
 @endsection
 

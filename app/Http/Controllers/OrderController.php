@@ -37,14 +37,37 @@ class OrderController extends Controller
         return view("pages.erp.order.order", compact("customers", "products"));
     }
 
-  public function store(Request $request)
+public function store(Request $request)
 {
     $products = json_decode($request->product, true); // decode JSON array
 
+    if (!$products || count($products) == 0) {
+        return redirect()->back()->with('error', 'No products added to the order.');
+    }
+
+    // Calculate totals
+    $total_amount = 0;
+    $total_discount = 0;
+
+    foreach ($products as $p) {
+        $total_amount += $p['price'] * $p['qty'];
+        $total_discount += $p['discount'] * $p['qty'];
+    }
+
+    $net_amount = $total_amount - $total_discount;
+
+    // Create order
     $order = new Order();
     $order->customer_id = $request->customer_id;
+    $order->total_amount = $total_amount ?: 0; // default 0 if calculation fails
+    $order->discount = $total_discount ?: 0;
+    $order->net_amount = $net_amount ?: 0;
+    $order->status_id = 1; // default: pending
+    $order->delivery_date = now(); // default today
+    $order->delivery_address = "Not Provided"; // default placeholder
     $order->save();
 
+    // Save order details
     foreach ($products as $p) {
         $order_detail = new OrderDetail();
         $order_detail->order_id = $order->id;
@@ -54,17 +77,22 @@ class OrderController extends Controller
         $order_detail->discount = $p['discount'];
         $order_detail->save();
     }
-
-    // return redirect()->route('orders.show', $order->id)
-    //                  ->with('success', 'Order created successfully');
-    return redirect()->route('orders.index')
-                 ->with('success', 'Order created successfully');
-
-
-
-
-
+   
+// Update stock
+$stock = Stock::where('product_id', $p['id'])->first();
+if ($stock) {
+    $stock->qty -= $p['qty']; // reduce stock
+    if ($stock->qty < 0) $stock->qty = 0; // prevent negative stock
+    $stock->save();
 }
+
+
+
+    return redirect()->route('orders.index')
+                     ->with('success', 'Order created successfully');
+}
+
+
 
 
 

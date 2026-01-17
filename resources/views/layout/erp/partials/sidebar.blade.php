@@ -26,12 +26,12 @@
                     </li>
                     <li title="Dashboard"><a href="{{ route('product.index') }}"><i
                                 data-feather="package"></i><span>Products</span></a>
-                                <form action="{{ route('product.index') }}" method="GET" class="d-none">
+                        <form action="{{ route('product.index') }}" method="GET" class="d-none">
                             @csrf
                         </form>
 
-                            </li>
-                    <li title="Dashboard"><a href="index-sales.html"><i
+                    </li>
+                    <li title="Dashboard"><a href="{{ route('purchases.index') }}"><i
                                 data-feather="bar-chart-2"></i><span>Purchase</span></a></li>
                     <li title="Dashboard"><a href="{{ route('orders.index') }}"><i
                                 data-feather="shopping-cart"></i><span>Orders</span></a>
@@ -39,9 +39,14 @@
 
 
 
-                            </li>
-                    <li title="Dashboard"><a href="index-payment.html"><i
-                                data-feather="credit-card"></i><span>Stock</span></a></li>
+                    </li>
+                    <li title="Stock">
+                        <a href="{{ route('stocks.index') }}">
+                            <i data-feather="archive"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+
                     <li class="header">Apps & Pages </li>
                     <li title="Support"><a href="{{ route('telemedicine.index') }}"><i
                                 data-feather="message-circle"></i><span>24/7 Doctor Support</span></a>

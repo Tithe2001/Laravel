@@ -19,150 +19,149 @@
 @section('content')
     <div class="content-wrapper">
         <div class="container-fluid mt-5 px-4 pt-5">
-                <div class="invoice-box shadow-sm ms-lg-4">
-                    <div class="card shadow-sm mt-4 pt-3 ms-lg-4">
-                        <div class="card-body ">
+            <div class="invoice-box shadow-sm ms-lg-4">
+                <div class="card shadow-sm mt-4 pt-3 ms-lg-4">
+                    <div class="card-body ">
 
 
-                            <form id="order_form" method="POST" action="{{ route('orders.store') }}">
-                                @csrf
-                                <input type="hidden" name="customer_id" id="form_customer_id">
-                                <input type="hidden" name="product" id="form_product">
-                            </form>
+                        <form id="order_form" method="POST" action="{{ route('orders.store') }}">
+                            @csrf
+                            <input type="hidden" name="customer_id" id="form_customer_id">
+                            <input type="hidden" name="product" id="form_product">
+                        </form>
 
 
-                            <!-- Header -->
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <h4 class="fw-bold text-primary">FAST PHARMA</h4>
-                                    <p class="mb-0">123 Mirpur</p>
-                                    <p class="mb-0">Dhaka, Bangladesh</p>
-                                    <p class="mb-0">Phone: +880 1834-567890</p>
-                                </div>
-
-                                <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                                    <h5 class="fw-bold">INVOICE</h5>
-                                    <p class="mb-0"><strong>Invoice #:</strong> INV-001</p>
-                                    <p class="mb-0"><strong>Date:</strong> 06 Jan 2026</p>
-                                </div>
+                        <!-- Header -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h4 class="fw-bold text-primary">FAST PHARMA</h4>
+                                <p class="mb-0">123 Mirpur</p>
+                                <p class="mb-0">Dhaka, Bangladesh</p>
+                                <p class="mb-0">Phone: +880 1834-567890</p>
                             </div>
 
-                            <hr>
+                            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                                <h5 class="fw-bold">INVOICE</h5>
+                                <p class="mb-0"><strong>Invoice #:</strong> INV-001</p>
+                                <p class="mb-0"><strong>Date:</strong> 06 Jan 2026</p>
+                            </div>
+                        </div>
 
-                            <!-- Billing Info -->
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <h6 class="fw-bold">Billed To:</h6>
+                        <hr>
 
-                                    <select class="form-select mb-2" name="customer" id="customer_id">
-                                        <option value="">Select Customer</option>
-                                        @forelse ($customers as $customer)
-                                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                                        @empty
-                                            <option value="">Data Not Found</option>
-                                        @endforelse
-                                    </select>
+                        <!-- Billing Info -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6 class="fw-bold">Billed To:</h6>
 
-                                    <p class="mb-0 customer_address">Customer Address</p>
-                                    <p>Email: <span class="customer_email">customer@email.com</span></p>
-                                </div>
+                                <select class="form-select mb-2" name="customer" id="customer_id">
+                                    <option value="">Select Customer</option>
+                                    @forelse ($customers as $customer)
+                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                    @empty
+                                        <option value="">Data Not Found</option>
+                                    @endforelse
+                                </select>
 
-                                <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                                    <h6 class="fw-bold">Payment Method</h6>
-                                    <p class="mb-0">Cash / Bank / Mobile Banking</p>
-                                </div>
+                                <textarea class="form-control customer_address" style="height:40px" placeholder="Customer address" readonly></textarea>
+                                <textarea class="form-control customer_email" style="height:40px" placeholder="Customer email" readonly></textarea>
                             </div>
 
-                            <!-- Invoice Table -->
-                            <div class="table-responsive">
-                                <table class="table table-bordered align-middle">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Item</th>
-                                            <th class="text-end">Price</th>
-                                            <th class="text-center">Qty</th>
-                                            <th class="text-end">Discount</th>
-                                            <th class="text-end">Subtotal</th>
-                                            <th class="text-end">Action</th>
-                                        </tr>
+                            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                                <h6 class="fw-bold">Payment Method</h6>
+                                <p class="mb-0">Cash / Bank / Mobile Banking</p>
+                            </div>
+                        </div>
 
-                                        <!-- Product Select Row -->
-                                        <tr>
-                                            <th>
-                                                <select class="form-select" name="product" id="product_id">
-                                                    <option value="">Select Product</option>
-                                                    @forelse ($products as $product)
-                                                        <option value='@json(['id' => $product->id, 'name' => $product->name, 'selling_price' => $product->selling_price])'>
-                                                            {{ $product->name }}
-                                                        </option>
-                                                    @empty
-                                                        <option value="">Data Not Found</option>
-                                                    @endforelse
-                                                </select>
-                                            </th>
+                        <!-- Invoice Table -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th class="text-end">Price</th>
+                                        <th class="text-center">Qty</th>
+                                        <th class="text-end">Discount</th>
+                                        <th class="text-end">Subtotal</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
 
-                                            <th class="text-end product_price">00</th>
+                                    <!-- Product Select Row -->
+                                    <tr>
+                                        <th>
+                                            <select class="form-select" name="product" id="product_id">
+                                                <option value="">Select Product</option>
+                                                @forelse ($products as $product)
+                                                    <option value='@json(['id' => $product->id, 'name' => $product->name, 'selling_price' => $product->selling_price])'>
+                                                        {{ $product->name }}
+                                                    </option>
+                                                @empty
+                                                    <option value="">Data Not Found</option>
+                                                @endforelse
+                                            </select>
+                                        </th>
 
-                                            <th class="text-center">
-                                                <input type="text" class="form-control product_qty" value="1">
-                                            </th>
+                                        <th class="text-end product_price">00</th>
 
-                                            <th class="text-end">
-                                                <input type="text" class="form-control product_discount" value="0">
-                                            </th>
+                                        <th class="text-center">
+                                            <input type="text" class="form-control product_qty" value="1">
+                                        </th>
 
-                                            <th class="text-end">
-                                                <input type="text" class="form-control product_subtotal" value="0">
-                                            </th>
+                                        <th class="text-end">
+                                            <input type="text" class="form-control product_discount" value="0">
+                                        </th>
 
-                                            <th class="text-end">
-                                                <button class="btn btn-primary btn-sm" type="button"
-                                                    onclick="handle_add()">Add</button>
-                                            </th>
-                                        </tr>
-                                    </thead>
+                                        <th class="text-end">
+                                            <input type="text" class="form-control product_subtotal" value="0">
+                                        </th>
 
-                                    <tbody id="cart_items">
-                                        <!-- dynamic rows will be added here -->
-                                    </tbody>
+                                        <th class="text-end">
+                                            <button class="btn btn-primary btn-sm" type="button"
+                                                onclick="handle_add()">Add</button>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="cart_items">
+                                    <!-- dynamic rows will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Totals -->
+                        <div class="row justify-content-end">
+                            <div class="col-md-5">
+                                <table class="table">
+                                    <tr>
+                                        <th>Subtotal</th>
+                                        <td class="text-end grand_subtotal">0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Discount</th>
+                                        <td class="text-end grand_discount">0.00</td>
+                                    </tr>
+                                    <tr class="table-light">
+                                        <th>Grand Total</th>
+                                        <th class="text-end grand_total">0.00</th>
+                                    </tr>
                                 </table>
                             </div>
-
-                            <!-- Totals -->
-                            <div class="row justify-content-end">
-                                <div class="col-md-5">
-                                    <table class="table">
-                                        <tr>
-                                            <th>Subtotal</th>
-                                            <td class="text-end grand_subtotal">0.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Discount</th>
-                                            <td class="text-end grand_discount">0.00</td>
-                                        </tr>
-                                        <tr class="table-light">
-                                            <th>Grand Total</th>
-                                            <th class="text-end grand_total">0.00</th>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="text-center mt-4">
-                                <p class="text-muted mb-1"> <button onclick="order_submit()" class="btn btn-secondary">Place
-                                        Order</button></p>
-                            </div>
-                            <div class="text-center mt-3 no-print">
-                                <button class="btn btn-primary me-2" onclick="window.print()">Print Invoice</button>
-                            </div>
-
                         </div>
+
+                        <!-- Footer -->
+                        <div class="text-center mt-4">
+                            <p class="text-muted mb-1"> <button onclick="order_submit()" class="btn btn-secondary">Place
+                                    Order</button></p>
+                        </div>
+                        <div class="text-center mt-3 no-print">
+                            <button class="btn btn-primary me-2" onclick="window.print()">Print Invoice</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection
 
 @push('js')
@@ -172,14 +171,23 @@
         // customer Change
         document.querySelector("#customer_id").addEventListener("change", function() {
             let customer_id = this.value;
-            fetch(`{{ URL('customer/find') }}/${customer_id}`)
+
+            if (!customer_id) {
+                document.querySelector(".customer_address").value = "";
+                document.querySelector(".customer_email").innerText = "";
+                return;
+            }
+
+            fetch(`{{ url('customer/find') }}/${customer_id}`)
                 .then(res => res.json())
                 .then(data => {
-                    document.querySelector(".customer_email").innerText = data.email;
-                    document.querySelector(".customer_address").innerText = data.name;
+                    document.querySelector(".customer_address").value = data.address;
+                    document.querySelector(".customer_email").value = data.email;
+
                 })
-                .catch(error => console.log(error));
+                .catch(err => console.log(err));
         });
+
 
         // product change
         document.querySelector("#product_id").addEventListener("change", function() {

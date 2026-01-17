@@ -95,6 +95,22 @@ class CustomerController extends Controller
     }
 
 
+function find($id)
+{
+    $customer = Customer::findOrFail($id);
+
+    return response()->json([
+        'name'    => $customer->name,
+        'email'   => $customer->email,
+        'address' => $customer->address,
+    ]);
+}
+
+
+
+
+
+
 
 }
 
@@ -102,3 +118,5 @@ function sendmail(){
     Mail::to("is4901745@gmail.com")->send(new UserNotification);
     return "Mail has been sent successfully";
 }
+
+
