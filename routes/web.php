@@ -28,9 +28,55 @@ Route::middleware("auth")->group(function () {
 
 
 
-    Route::get('/telemedicine', [TelemedicineController::class, 'index'])->name('telemedicine.index');
-    Route::get('/telemedicine/create', [TelemedicineController::class, 'create'])->name('telemedicine.create');
-    Route::get('/telemedicine/payment', [TelemedicineController::class, 'payment'])->name('telemedicine.payment');
+//     Route::get('/telemedicine', [TelemedicineController::class, 'index'])->name('telemedicine.index');
+//     Route::get('/telemedicine/create', [TelemedicineController::class, 'create'])->name('telemedicine.create');
+//     Route::get('/telemedicine/payment', [TelemedicineController::class, 'payment'])->name('telemedicine.payment');
+//     Route::post('/telemedicine/save', [TelemedicineController::class, 'store'])
+//         ->name('telemedicine.save');
+
+//     Route::get('/telemedicine/payment/{id}', [TelemedicineController::class, 'payment'])
+//         ->name('telemedicine.payment');
+
+//     Route::post('/telemedicine/payment/confirm', [TelemedicineController::class, 'confirmPayment'])
+//         ->name('telemedicine.payment.confirm');
+
+//     Route::get('/telemedicine/appointment', [TelemedicineController::class, 'create'])
+//         ->name('telemedicine.appointment');
+
+// Route::get('/get-doctors/{department_id}', [TelemedicineController::class, 'getDoctors']);
+
+
+
+
+
+Route::get('/telemedicine', [TelemedicineController::class, 'index'])->name('telemedicine.index');
+Route::get('/telemedicine/create', [TelemedicineController::class, 'create'])->name('telemedicine.create');
+Route::get('/telemedicine/appointment', [TelemedicineController::class, 'create'])->name('telemedicine.appointment');
+
+// Payment routes
+Route::get('/telemedicine/payment', [TelemedicineController::class, 'paymentForm'])
+    ->name('telemedicine.payment.form'); // show form without ID
+
+Route::get('/telemedicine/payment/{id}', [TelemedicineController::class, 'payment'])
+    ->name('telemedicine.payment'); // show payment for specific appointment
+
+Route::post('/telemedicine/payment/confirm', [TelemedicineController::class, 'confirmPayment'])
+    ->name('telemedicine.payment.confirm');
+
+Route::post('/telemedicine/save', [TelemedicineController::class, 'store'])
+    ->name('telemedicine.save');
+
+// AJAX get doctors by department
+Route::get('/get-doctors/{department}', [TelemedicineController::class, 'getDoctors']);
+
+
+
+
+
+
+
+
+
 
 
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
@@ -42,37 +88,20 @@ Route::middleware("auth")->group(function () {
 
 
 
-Route::prefix('purchases')->group(function () {
+    Route::prefix('purchases')->group(function () {
 
-    Route::get('/', [PurchaseController::class, 'index'])->name('purchases.index');
-    Route::get('/create', [PurchaseController::class, 'create'])->name('purchases.create');
-    Route::post('/store', [PurchaseController::class, 'store'])->name('purchases.store');
-    Route::get('/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
-    Route::get('/{purchase}/edit', [PurchaseController::class, 'edit'])->name('purchases.edit');
-    Route::put('/{purchase}', [PurchaseController::class, 'update'])->name('purchases.update');
-    Route::delete('/{purchase}', [PurchaseController::class, 'destroy'])->name('purchases.destroy');
-});
+        Route::get('/', [PurchaseController::class, 'index'])->name('purchases.index');
+        Route::get('/create', [PurchaseController::class, 'create'])->name('purchases.create');
+        Route::post('/store', [PurchaseController::class, 'store'])->name('purchases.store');
+        Route::get('/{purchase}', [PurchaseController::class, 'show'])->name('purchases.show');
+        Route::get('/{purchase}/edit', [PurchaseController::class, 'edit'])->name('purchases.edit');
+        Route::put('/{purchase}', [PurchaseController::class, 'update'])->name('purchases.update');
+        Route::delete('/{purchase}', [PurchaseController::class, 'destroy'])->name('purchases.destroy');
+    });
 
-Route::prefix('stocks')->group(function () {
-    Route::get('/', [StockController::class, 'index'])->name('stocks.index');
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Route::prefix('stocks')->group(function () {
+        Route::get('/', [StockController::class, 'index'])->name('stocks.index');
+    });
 });
 
 
@@ -98,4 +127,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::match(['get', 'post'], '/logout/', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource("orders",OrderController::class);
+Route::resource("orders", OrderController::class);

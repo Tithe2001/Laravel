@@ -1,10 +1,8 @@
 @extends('layout.erp.app')
 
 @section('content')
-
-<!-- Start Appointment Area -->
 <div class="content-wrapper">
-    <div class="container-fluid pt-5"> <!-- pt-5 to clear fixed header -->
+    <div class="container-fluid pt-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-10 col-xl-10">
                 <div class="card shadow-lg border-0 rounded-4">
@@ -17,7 +15,7 @@
                         </div>
 
                         <!-- Form -->
-                        <form method="GET" action="{{ URL('telemedicine/save') }}">
+                        <form method="post" action="{{ route('telemedicine.save') }}">
                             @csrf
                             <div class="row g-3">
 
@@ -45,10 +43,10 @@
                                     </div>
                                 </div>
 
-                                <!-- DOB -->
+                                <!-- Date of Birth -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="date" name="dob" class="form-control rounded-3" id="floatingDOB" placeholder="Date of Birth" required>
+                                        <input type="date" name="date_of_birth" class="form-control rounded-3" id="floatingDOB" placeholder="Date of Birth" required>
                                         <label for="floatingDOB">Date of Birth*</label>
                                     </div>
                                 </div>
@@ -65,33 +63,29 @@
                                             <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female">
                                             <label class="form-check-label" for="genderFemale">Female</label>
                                         </div>
-
                                     </div>
                                 </div>
 
-                                <!-- Service -->
+                                <!-- Specialist Service -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select rounded-3" name="service" id="floatingService" required>
-                                            <option value="" disabled selected>Select Specialist Service*</option>
-                                            <option value="Child Specialist">pediatric</option>
-                                            <option value="Medicine Specialist">Medicine Specialist</option>
-                                            <option value="Emergency Dentistry">Emergency Dentistry</option>
-                                            <option value="Orthopedist">Orthopedist</option>
+                                        <select class="form-select" name="specialist" id="department" required>
+                                            <option value="">Select Specialist Service</option>
+                                            @foreach ($departments as $department)
+<option value="{{ $department->id }}">{{ $department->name }}</option>
+                                            @endforeach
                                         </select>
-                                        <label for="floatingService">Specialist Service*</label>
+                                        <label>Specialist Service*</label>
                                     </div>
                                 </div>
+
+                                <!-- Doctor -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select rounded-3" name="doctor" id="floatingDoctor" required>
-                                            <option value="" disabled selected>Select doctor*</option>
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                            <option value=""></option>
-                                            <option value=""></option>
+                                        <select class="form-select" name="doctor" id="doctor" required>
+                                            <option value="">Select Doctor</option>
                                         </select>
-                                        <label for="floatingDoctor">Doctor*</label>
+                                        <label>Doctor*</label>
                                     </div>
                                 </div>
 
@@ -121,11 +115,9 @@
 
                                 <!-- Submit -->
                                 <div class="col-12 text-center">
-                                    <a href="{{ route('telemedicine.payment') }}" type="submit"  class="btn btn-primary rounded-3 shadow-sm px-5 py-2">Send Appointment Request</a>
-                               <form  action="{{ route('telemedicine.payment') }}" method="GET"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
+                                    <button type="submit" class="btn btn-primary px-5">
+                                        Send Appointment Request
+                                    </button>
                                 </div>
 
                             </div>
@@ -137,6 +129,33 @@
         </div>
     </div>
 </div>
-<!-- End Appointment Area -->
 
+<!-- AJAX for dynamic doctor dropdown -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const departmentSelect = document.getElementById('department');
+    const doctorSelect = document.getElementById('doctor');
+
+    departmentSelect.addEventListener('change', function () {
+        const departmentName = this.value;
+        doctorSelect.innerHTML = '<option value="">Loading...</option>';
+
+        fetch("{{ url('/get-doctors') }}/" + encodeURIComponent(departmentName))
+            .then(response => response.json())
+            .then(data => {
+                doctorSelect.innerHTML = '<option value="">Select Doctor</option>';
+                if (data.length === 0) {
+                    doctorSelect.innerHTML += '<option value="">No doctors available</option>';
+                }
+                data.forEach(doctor => {
+                    doctorSelect.innerHTML += `<option value="${doctor.name}">${doctor.name}</option>`;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                doctorSelect.innerHTML = '<option value="">Error loading doctors</option>';
+            });
+    });
+});
+</script>
 @endsection
