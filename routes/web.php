@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware("auth")->group(function () {
 
-
+    Route::resource("orders", OrderController::class);
     Route::get("/", [DashboardController::class, "index"]);
     Route::get("/customer", [CustomerController::class, "index"]);
     Route::get("/customer/create", [CustomerController::class, "create"]);
@@ -127,4 +127,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::match(['get', 'post'], '/logout/', [LoginController::class, 'logout'])->name('logout');
 
-Route::resource("orders", OrderController::class);
+

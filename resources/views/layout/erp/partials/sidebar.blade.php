@@ -33,7 +33,7 @@
                     </li>
                     <li title="Dashboard"><a href="{{ route('purchases.index') }}"><i
                                 data-feather="bar-chart-2"></i><span>Purchase</span></a></li>
-                    <li title="Dashboard"><a href="{{ route('orders.index') }}"><i
+                    <li title="Dashboard"><a href="{{ URL('orders') }}"><i
                                 data-feather="shopping-cart"></i><span>Orders</span></a>
 
 

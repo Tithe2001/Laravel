@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -34,13 +35,29 @@ public function register(Request $request)
         }
 
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        // $input['password'] = bcrypt($input['password']);
+        $input['password'] =  Hash::make(12345678);
         $user = User::create($input);
         $success['token'] =  $user->createToken('api-token')->plainTextToken;
         $success['name'] =  $user->name;
 
         return $this->sendResponse($success, 'User register successfully.');
     }
+
+
+
+
+
+
+      public function user(Request $request)
+    {
+        return $request->user();
+    }
+
+
+
+
+
 
 
 

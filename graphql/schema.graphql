@@ -1,0 +1,11 @@
+type Query {
+    roles: [Role!]! @all
+}
+
+type Role {
+    id: ID!
+    name: String
+
+    created_at: String
+    updated_at: String
+}
